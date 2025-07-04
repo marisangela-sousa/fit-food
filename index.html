@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Food</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Recipes</h1>
+        </header>
+        <section>
+            <header>
+                <h2>Share your recipe</h2>
+            </header>
+            <form>
+                <input name="title" class="input-title" required/>
+            <!-- <button>Upload image</button> -->
+                <input name="ingredients" class="input-ingredients" required/>
+                <input name="steps" class="input-steps" required/>
+                <button class="post">Postar</button>
+            </form>
+        </section>
+        <section>
+            <article class="recipe">
+                <h2 class="recipe-title">Title</h2>
+                <!-- <img class="recipe-image"/> -->
+                <ul>
+                    <li class="recipe-ingredient">Ingredient</li>
+                </ul>
+                <p class="recipe-steps">If the wings are whole, you’ll want to separate the flat and drumette first. Pat the wings dry with paper towels. Place in a large bowl with a glug of olive oil and an envelope of onion soup mix and use your hands to coat the wings all over.</p>
+            </article>
+        </section>
+    </main>
+
+    <script src="js.js"></script>
+</body>
+</html>
