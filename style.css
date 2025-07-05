@@ -4,10 +4,20 @@
     box-sizing: border-box;
 }
 
+main{
+    margin: 0 5rem;
+}
+
 /* li{
     list-style: none;
 } */
 
 img {
     width: 15rem;
+}
+
+.container-recipes{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 3rem;
 }

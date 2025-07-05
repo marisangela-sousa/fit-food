@@ -1,96 +1,96 @@
 const inputTitle = document.querySelector(".input-title");
+const inputDescription = document.querySelector(".input-description");
+const inputImageLink = document.querySelector(".input-image");
 const inputIngredients = document.querySelector(".input-ingredients");
 const inputSteps = document.querySelector(".input-steps");
-// const recipe = document.querySelector(".recipe")
 const containerRecipes = document.querySelector(".container-recipes")
 const button = document.querySelector(".post");
 
-const post = () => {
+const post = (event) => {
+    event.preventDefault();
+
     const titleValue = inputTitle.value;
-    const ingredientsValue = inputIngredients.value;
-    const stepsValue = inputIngredients.value;
+    const descriptionValue = inputDescription.value;
+    const imageValue = inputImageLink.value;
 
-    const title = document.createElement("h2");
-    title.classList.add("recipe-title");
+    const recipe = document.createElement("article");
+    recipe.classList.add("card");
+    recipe.style.width = "18rem";
+    
+    const image = document.createElement("img");
+    image.src = imageValue;
+    image.classList.add("card-img-top");
+    image.style.maxHeight = "12rem";
+
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    const title = document.createElement("h5");
     title.innerHTML = titleValue;
+    title.classList.add("card-title");
 
-    const ulIngredients = document.createElement("ul");
+    const description = document.createElement("p");
+    description.textContent = descriptionValue;
+    description.classList.add("card-text");
 
-    const ingredients = document.createElement("li");
-    ingredients.classList.add("recipe-ingredient")
-    ingredients.innerHTML = ingredientsValue;
+    const seeDetailsButton = document.createElement("button");
+    seeDetailsButton.textContent = "See Recipe"
+    seeDetailsButton.classList.add("btn");
+    seeDetailsButton.classList.add("btn-primary");
+    seeDetailsButton.style.width = "100%"
 
-    const steps = document.createElement("p");
-    steps.classList.add("recipe-steps");
-    steps.innerHTML = stepsValue;
+    cardBody.appendChild(title);
+    cardBody.appendChild(description);
+    cardBody.appendChild(seeDetailsButton);
 
-    ulIngredients.appendChild(ingredients);
-
-    recipe.appendChild(title);
-    recipe.appendChild(ulIngredients);
-    recipe.appendChild(steps)
+    recipe.appendChild(image);
+    recipe.appendChild(cardBody);
+    
+    containerRecipes.appendChild(recipe);
     
 }
 
 button.addEventListener("click", post);
 
 const getRecipes = (recipes) => {
-    containerRecipes.innerHTML = "";
     recipes.forEach(element => {
-    const recipe = document.createElement("article");
-    recipe.classList.add("card");
-    recipe.style.width = "18rem";
+        const recipe = document.createElement("article");
+        recipe.classList.add("card");
+        recipe.style.width = "18rem";
 
     
-    const image = document.createElement("img");
-    image.src = element.image;
-    image.classList.add("card-img-top");
+        const image = document.createElement("img");
+        image.src = element.image;
+        image.classList.add("card-img-top");
+        image.style.maxHeight = "12rem";
 
-    const cardBody = document.createElement("div");
-    cardBody.classList.add("card-body");
+        const cardBody = document.createElement("div");
+        cardBody.classList.add("card-body");
     
-    const title = document.createElement("h5");
-    title.innerHTML = element.title;
-    title.classList.add("card-title");
+        const title = document.createElement("h5");
+        title.innerHTML = element.title;
+        title.classList.add("card-title");
 
-    const description = document.createElement("p");
-    description.textContent = element.description;
-    description.classList.add("card-text");
-    
-    const ulIngredients = document.createElement("ul");
-    
-    element.ingredients.forEach(ingredientsList => {
-        const ingredients = document.createElement("li");
-        ingredients.classList.add("recipe-ingredient")
-        ingredients.innerHTML = ingredientsList.name;
-        
-        ulIngredients.appendChild(ingredients);
-    })
-    
-    const steps = document.createElement("p");
-    steps.innerHTML = element.steps;
-    steps.classList.add("recipe-steps");
+        const description = document.createElement("p");
+        description.textContent = element.description;
+        description.classList.add("card-text");
     
     
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete"
-    deleteButton.classList.add("btn");
-    deleteButton.classList.add("btn-primary");
-    deleteButton.style.width = "100%"
-    deleteButton.onclick = () => {
-        recipe.remove();
-    }
+        const seeDetailsButton = document.createElement("button");
+        seeDetailsButton.textContent = "See Recipe"
+        seeDetailsButton.classList.add("btn");
+        seeDetailsButton.classList.add("btn-primary");
+        seeDetailsButton.style.width = "100%"
+        // seeDetailsButton.onclick = () => {
+        //     recipe.remove();
+        // }
 
-    cardBody.appendChild(title);
-    cardBody.appendChild(description);
-    cardBody.appendChild(deleteButton);
+        cardBody.appendChild(title);
+        cardBody.appendChild(description);
+        cardBody.appendChild(seeDetailsButton);
     
-    recipe.appendChild(image);
-    recipe.appendChild(cardBody);
-    // recipe.appendChild(ulIngredients);
-    // recipe.appendChild(steps);
-
-        
+        recipe.appendChild(image);
+        recipe.appendChild(cardBody);
 
         containerRecipes.appendChild(recipe);
     });
